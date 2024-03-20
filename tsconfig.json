@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "CommonJS",
+    "outDir": "dist",
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "resolveJsonModule": true,
+  },
+  "files": ["./hardhat.config.ts"],
+  "include": [
+    "./tests",
+    "./deploy",
+    "./scripts",
+    "./networks",
+    "./helpers", 
+    "./config.ts",
+  ],
+}
