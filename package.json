@@ -12,6 +12,10 @@
     "deploy:hardhat": "hardhat deploy --network hardhat --tags",
     "deploy:saakuruTestnet": "hardhat deploy --network saakuruTestnet --tags",
     "deploy:saakuruMainnet": "hardhat deploy --network saakuruMainnet --tags",
+    "deploy:harmonyTestnet": "hardhat deploy --network harmonyTestnet --tags",
+    "deploy:ethereumTestnet": "hardhat deploy --network ethereumTestnet --tags",
+    "deploy:baseTestnet": "hardhat deploy --network baseTestnet --tags",
+    "deploy:arbitrumTestnet": "hardhat deploy --network arbitrumTestnet --tags",
     "interact": "ts-node scripts/interact.ts",
     "generate:wallet": "ts-node scripts/generateWallet.ts",
     "encrypt": "ts-node scripts/encrypt.ts"

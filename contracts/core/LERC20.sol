@@ -33,7 +33,11 @@ contract LERC20 is Context, ILERC20 {
         recoveryAdminKeyHash = "";
         timelockPeriod = timelockPeriod_;
         losslessTurnOffTimestamp = 0;
-        lossless = ILssController(lossless_);
+        if(lossless_ != address(0)) {
+            lossless = ILssController(lossless_);
+        } else {
+            isLosslessOn = false;
+        }
     }
 
     // --- LOSSLESS modifiers ---
@@ -117,7 +121,6 @@ contract LERC20 is Context, ILERC20 {
     }
 
     function proposeLosslessTurnOff() override external onlyRecoveryAdmin {
-
         require(losslessTurnOffTimestamp == 0, "LERC20: TurnOff already proposed");
         require(isLosslessOn, "LERC20: Lossless already off");
         losslessTurnOffTimestamp = block.timestamp + timelockPeriod;
