@@ -27,12 +27,18 @@ contract LERC20 is Context, ILERC20 {
         _mint(_msgSender(), totalSupply_);
         _name = name_;
         _symbol = symbol_;
+        require(admin_ != address(0), "LERC20: Recovery admin cannot be zero address");
         admin = admin_;
+        require(recoveryAdmin_ != address(0), "LERC20: Recovery admin cannot be zero address");
         recoveryAdmin = recoveryAdmin_;
         recoveryAdminCandidate = address(0);
         recoveryAdminKeyHash = "";
+        require(timelockPeriod_ > 2 hours, "LERC20: Timelock period must be greater than 0");
+        require(timelockPeriod_ < 2 days, "LERC20: Timelock period must be less than 2 days");
+        // Note: should not be changed after deployment, due to potential security risk in case of loss of owner private key
         timelockPeriod = timelockPeriod_;
         losslessTurnOffTimestamp = 0;
+        require(lossless_ != address(0), "LERC20: Lossless cannot be zero address");
         lossless = ILssController(lossless_);
     }
 
@@ -103,6 +109,7 @@ contract LERC20 is Context, ILERC20 {
     }
 
     function transferRecoveryAdminOwnership(address candidate, bytes32 keyHash) override  external onlyRecoveryAdmin {
+        require(candidate != address(0), "LERC20: Candidate cannot be zero address");
         recoveryAdminCandidate = candidate;
         recoveryAdminKeyHash = keyHash;
         emit NewRecoveryAdminProposal(candidate);
@@ -112,12 +119,13 @@ contract LERC20 is Context, ILERC20 {
         require(_msgSender() == recoveryAdminCandidate, "LERC20: Must be canditate");
         require(keccak256(key) == recoveryAdminKeyHash, "LERC20: Invalid key");
         emit NewRecoveryAdmin(recoveryAdminCandidate);
+        require(recoveryAdminCandidate != address(0), "LERC20: Candidate cannot be zero address");
         recoveryAdmin = recoveryAdminCandidate;
         recoveryAdminCandidate = address(0);
+        recoveryAdminKeyHash = "";
     }
 
     function proposeLosslessTurnOff() override external onlyRecoveryAdmin {
-
         require(losslessTurnOffTimestamp == 0, "LERC20: TurnOff already proposed");
         require(isLosslessOn, "LERC20: Lossless already off");
         losslessTurnOffTimestamp = block.timestamp + timelockPeriod;
@@ -204,7 +212,7 @@ contract LERC20 is Context, ILERC20 {
 
     function _transfer(address sender, address recipient, uint256 amount) internal virtual {
         require(sender != address(0), "ERC20: transfer from the zero address");
-
+        require(recipient != address(0), "ERC20: transfer to the zero address");
         uint256 senderBalance = _balances[sender];
         require(senderBalance >= amount, "ERC20: transfer amount exceeds balance");
         _balances[sender] = senderBalance - amount;

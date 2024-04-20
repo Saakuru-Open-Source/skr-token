@@ -1,6 +1,6 @@
 import { Wallet } from 'ethers';
 import { waffle, ethers, network } from 'hardhat';
-import { SKR } from '../dist/types';
+import { MockLssController, SKR } from '../dist/types';
 import { integrationFixture } from './shared/integration';
 
 const { expect } = require('chai');
@@ -61,5 +61,71 @@ describe('Admin', function () {
   // get admin
   it('Should return correct admin', async function () {
     expect(await skr.admin()).to.equal(users[0].address);
+  });
+
+  describe('Setup', async function () {
+    const mockLss = await(
+      await ethers.getContractFactory('MockLssController')
+    ).deploy() as MockLssController;
+    
+    it('Should not allow set to long timelock', async function () {
+      // Timelock period must be less than 2 days
+      await expect((
+        await ethers.getContractFactory('SKR')
+      ).deploy(
+        users[0].address,
+        users[1].address,
+        86400 * 2, // 1 day
+        mockLss.address,
+      )).to.be.revertedWith('LERC20: Timelock period must be less than 2 days');
+    });
+
+    it('Should not allow set to zero timelock', async function () {
+      // Timelock period must be greater than 0
+      await expect((
+        await ethers.getContractFactory('SKR')
+      ).deploy(
+        users[0].address,
+        users[1].address,
+        0, // 1 day
+        mockLss.address,
+      )).to.be.revertedWith('LERC20: Timelock period must be greater than 0');
+    });
+
+    it('Should not allow set to zero recoveryAdmin', async function () {
+      // Recovery admin must be set
+      await expect((
+        await ethers.getContractFactory('SKR')
+      ).deploy(
+        ethers.constants.AddressZero,
+        users[1].address,
+        86400, // 1 day
+        mockLss.address,
+      )).to.be.revertedWith('LERC20: Recovery admin must be set');
+    });
+
+    it('Should not allow set to zero admin', async function () {
+      // Admin must be set
+      await expect((
+        await ethers.getContractFactory('SKR')
+      ).deploy(
+        users[0].address,
+        ethers.constants.AddressZero,
+        86400, // 1 day
+        mockLss.address,
+      )).to.be.revertedWith('LERC20: Admin must be set');
+    });
+
+    it('Should not allow set to zero lssController', async function () {
+      // LssController must be set
+      await expect((
+        await ethers.getContractFactory('SKR')
+      ).deploy(
+        users[0].address,
+        users[1].address,
+        86400, // 1 day
+        ethers.constants.AddressZero,
+      )).to.be.revertedWith('LERC20: LssController must be set');
+    });
   });
 });
