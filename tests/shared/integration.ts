@@ -20,7 +20,7 @@ export const integrationFixture: Fixture<ContractFixture> =
     ).deploy(
       users[0].address,
       users[1].address,
-      86400,
+      86400, // 1 day
       mockLss.address,
     ) as SKR;
     await skr.deployed();

@@ -48,8 +48,8 @@ export const networks = {
     live: true,
     saveDeployments: true,
   },
-  ethereumGoerli: {
-    url: `https://goerli.infura.io/v3/${process.env.INFURA_KEY}`,
+  ethereumTestnet: {
+    url: 'https://eth-goerli.public.blastapi.io',
     accounts: [`0x${privateKey}`],
     chainId: 5,
     live: true,

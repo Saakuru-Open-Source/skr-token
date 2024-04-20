@@ -167,5 +167,13 @@ describe('ERC20', function () {
     expect(await skr.balanceOf(users[0].address)).to.equal(initialBalance.sub(100));
     expect(await skr.totalSupply()).to.equal(ethers.BigNumber.from('10').pow(18).mul(BigNumber.from(10).pow(9)).sub(100));
   });
+
+  it('Should not allow burn more than balance', async function () {
+    await expect(skr.burn(ethers.constants.MaxUint256)).to.be.reverted;
+  });
+
+  it('Should not allow transfer to zero address', async function () {
+    await expect(skr.transfer(ethers.constants.AddressZero, 100)).to.be.revertedWith('ERC20: transfer to the zero address');
+  });
 });
 
