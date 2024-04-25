@@ -12,7 +12,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const deployerContractDeployment = await get('DeployerContract');
   const deployerContract = await ethers.getContractAt('DeployerContract', deployerContractDeployment.address) as DeployerContract;
 
-  const SKRContract = await ethers.getContractFactory('SKR');
+  const SKRContract = await ethers.getContractFactory('SKRBridged');
 
   // Encode constructor parameters for SKR
   const deploymentData = SKRContract.getDeployTransaction(
@@ -20,13 +20,15 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     config.LOSSLESS_RECOVERY_ADMIN,
     config.TIMELOCK_PERIOD,
     config.LOSSLESS_IMPLEMENTATION,
+    config.MINTER,
   ).data;
 
   if (!deploymentData) {
     throw new Error('Deployment data not generated');
   }
 
-  const salt = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(config.DEPLOYMENT_SALT));   
+  const salt = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(config.DEPLOYMENT_SALT));
+   
   // Perform the create2 deploy
   const tx = await deployerContract.deploy(
     deploymentData,
@@ -36,13 +38,14 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const receipt = await tx.wait();
   const contractAddress = receipt.events.find((x) => x.event === 'ContractDeploy')?.args?.[1];
 
-  await save('SKR', {
+  await save('SKRBridged', {
     address: contractAddress,
     args: [
       config.LOSSLESS_ADMIN,
       config.LOSSLESS_RECOVERY_ADMIN,
       config.TIMELOCK_PERIOD,
       config.LOSSLESS_IMPLEMENTATION,
+      config.MINTER,
     ],
     // @ts-ignore
     abi: JSON.parse(SKRContract.interface.format(ethers.utils.FormatTypes.json)),
@@ -51,10 +54,10 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
     deployedBytecode: SKRContract.bytecode,
     linkedData: deploymentData,
   });
-  console.log('SKR deployed:', contractAddress);
+  console.log('SKRBridged deployed:', contractAddress);
 };
 
 export default func;
-func.id = 'SKR';
-func.tags = ['hardhat', 'v1'];
+func.id = 'SKRBridged';
+func.tags = ['hardhat', 'bridged'];
 func.dependencies = [];

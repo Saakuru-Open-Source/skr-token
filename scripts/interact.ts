@@ -10,9 +10,16 @@ const main = async () => {
 
   const contracts = getContracts();
 
-  const balance = await contracts.skr.balanceOf('0x00206a47F227E8518b3E80AD0794537223538b2E');
-  console.log(balance.div(BigNumber.from(10).pow(18)).toString());
+  // const balance = await contracts.skr.balanceOf('0x981374d3cf4928d46d39e814a5bc4db77cdca92b');
+  // console.log(balance.div(BigNumber.from(10).pow(18)).toString());
 
+
+  const admin = await contracts.skr.admin();
+  console.log('admin', admin);
+  const recoveryAdmin = await contracts.skr.recoveryAdmin();
+  console.log('recoveryAdmin', recoveryAdmin);
+  const totalSupply = await contracts.skr.totalSupply();
+  console.log('totalSupply', totalSupply.toString());
 };
 
 main()

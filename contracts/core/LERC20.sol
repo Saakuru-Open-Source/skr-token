@@ -23,13 +23,12 @@ contract LERC20 is Context, ILERC20 {
     bool public isLosslessOn = true;
     ILssController public lossless;
 
-    constructor(uint256 totalSupply_, string memory name_, string memory symbol_, address admin_, address recoveryAdmin_, uint256 timelockPeriod_, address lossless_) {
-        _mint(_msgSender(), totalSupply_);
+    constructor(string memory name_, string memory symbol_, address admin_, address recoveryAdmin_, uint256 timelockPeriod_, address lossless_) {
+        require(recoveryAdmin_ != address(0), "LERC20: Recovery admin cannot be zero address");
+        require(admin_ != address(0), "LERC20: Recovery admin cannot be zero address");
         _name = name_;
         _symbol = symbol_;
-        require(admin_ != address(0), "LERC20: Recovery admin cannot be zero address");
         admin = admin_;
-        require(recoveryAdmin_ != address(0), "LERC20: Recovery admin cannot be zero address");
         recoveryAdmin = recoveryAdmin_;
         recoveryAdminCandidate = address(0);
         recoveryAdminKeyHash = "";
@@ -39,7 +38,7 @@ contract LERC20 is Context, ILERC20 {
         timelockPeriod = timelockPeriod_;
         losslessTurnOffTimestamp = 0;
         require(lossless_ != address(0), "LERC20: Lossless cannot be zero address");
-        lossless = ILssController(lossless_);
+        lossless = ILssController(lossless_);     
     }
 
     // --- LOSSLESS modifiers ---

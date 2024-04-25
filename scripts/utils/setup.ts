@@ -7,7 +7,7 @@ dotenv.config();
 
 console.log('Running... ', process.env.NETWORK);
 
-const skr = require(`../../deployments/${process.env.NETWORK}/SKR.json`);
+const skr = require(`../../deployments/${process.env.NETWORK}/SKRBridged.json`);
 
 export const deployments = {
   skr,

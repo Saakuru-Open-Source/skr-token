@@ -5,10 +5,10 @@ import { decrypt } from '../scripts/encrypt';
 dotenv.config();
 
 const privateKeyEncrypted = process.env.WLT;
-const password = process.env.KEY;
+const key = process.env.KEY;
 const salt = process.env.SALT;
 
-const privateKey = decrypt(privateKeyEncrypted, password, salt);
+const privateKey = decrypt(privateKeyEncrypted, key, salt);
 
 export const networks = {
   saakuruTestnet:{
@@ -27,9 +27,30 @@ export const networks = {
     saveDeployments: true,
     gasPrice: 0,
   },
+  bscTestnet: {
+    url: 'https://data-seed-prebsc-1-s1.binance.org:8545',
+    chainId: 97,
+    accounts: [`0x${privateKey}`],
+    live: true,
+    saveDeployments: true,
+  },
+  bscMainnet: {
+    url: 'https://bsc-dataseed1.ninicoin.io',
+    chainId: 56,
+    accounts: [`0x${privateKey}`],
+    live: true,
+    saveDeployments: true,
+  },
   harmonyTestnet: {
     url: 'https://api.s0.b.hmny.io',
     chainId: 1666700000,
+    accounts: [`0x${privateKey}`],
+    live: true,
+    saveDeployments: true,
+  },
+  harmonyDevnet: {
+    url: 'https://api.s0.ps.hmny.io',
+    chainId: 1666900000,
     accounts: [`0x${privateKey}`],
     live: true,
     saveDeployments: true,
@@ -80,6 +101,13 @@ export const networks = {
     url: 'https://sepolia-rollup.arbitrum.io/rpc',
     accounts: [`0x${privateKey}`],
     chainId: 421611,
+    live: true,
+    saveDeployments: true,
+  },
+  polygonTestnet: {
+    url: 'https://polygon-mumbai-pokt.nodies.app',
+    accounts: [`0x${privateKey}`],
+    chainId: 80001,
     live: true,
     saveDeployments: true,
   },
