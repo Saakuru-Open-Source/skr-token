@@ -13,6 +13,8 @@ import '@typechain/hardhat';
 import 'hardhat-deploy';
 import 'solidity-coverage';
 import 'hardhat-gas-reporter';
+// import '@nomicfoundation/hardhat-verify';
+// import '@nomicfoundation/hardhat-toolbox';
 
 dotenv.config();
 
@@ -41,7 +43,11 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-
+  etherscan: {
+    apiKey: {
+      bsc: process.env.BSCSCAN_API_KEY, 
+    },
+  },
   // repository config
   paths: {
     sources: path.resolve(__dirname, 'contracts'),
