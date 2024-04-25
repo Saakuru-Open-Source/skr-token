@@ -3,13 +3,16 @@ pragma solidity ^0.8.0;
 
 import "./core/LERC20.sol";
 import "@openzeppelin/contracts/utils/Context.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+import "@openzeppelin/contracts/access/AccessControl.sol";
 
-contract SKR is Context, LERC20 {
+contract SKRBridged is Context, LERC20, AccessControl {
     constructor(
       address admin_, 
       address recoveryAdmin_, 
       uint256 timelockPeriod_, 
-      address lossless_
+      address lossless_,
+      address minter_
     ) LERC20(
       "Saakuru", 
       "SKR", 
@@ -18,7 +21,9 @@ contract SKR is Context, LERC20 {
       timelockPeriod_, 
       lossless_
     ) {
-        _mint(recoveryAdmin_, 10**9 * 10**18);
+        require(minter_ != address(0), "SKRBridged: initial owner is the zero address");
+        _grantRole(DEFAULT_ADMIN_ROLE, admin_);
+        _grantRole(keccak256("MINTER_ROLE"), minter_);
     }
 
     modifier lssBurn(address account, uint256 amount) {
@@ -39,5 +44,17 @@ contract SKR is Context, LERC20 {
             _approve(account, _msgSender(), currentAllowance - amount);
         }
         _burn(account, amount);
+    }
+
+    function mint(address to, uint256 amount) public onlyRole(keccak256("MINTER_ROLE")) {
+        _mint(to, amount);
+    }
+
+    function supportsInterface(bytes4 interfaceId) 
+        public 
+        view virtual 
+        override(AccessControl, LERC20)
+        returns (bool) {
+        return super.supportsInterface(interfaceId);
     }
 }

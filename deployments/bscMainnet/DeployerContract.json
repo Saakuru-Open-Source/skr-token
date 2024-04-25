@@ -1,0 +1,158 @@
+{
+  "address": "0xE4E7F8b1F09446Ad9395531E861e0b1467a82Eb3",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "deployment",
+          "type": "address"
+        }
+      ],
+      "name": "ContractDeploy",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "creationCode",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "deploy",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "transactionHash": "0x4c4125f76c38af4688ab9b7bc18d3f0787f10906f1319ce76505f17d685ac11f",
+  "receipt": {
+    "to": null,
+    "from": "0x87F9F7e6C9502D2Ce13dae9BA716e54cA98f118F",
+    "contractAddress": "0xE4E7F8b1F09446Ad9395531E861e0b1467a82Eb3",
+    "transactionIndex": 15,
+    "gasUsed": "379825",
+    "logsBloom": "0x00010000000004000000000000000000000000000000000000800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000040000000000000000001000000000000000000000000000000020000020000000000000000000800000000000000000000000000000000400000000000000008000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x1f3d65df663e6070d534d4217d0935769e744dd86be742063cb8bd692e1ef7ba",
+    "transactionHash": "0x4c4125f76c38af4688ab9b7bc18d3f0787f10906f1319ce76505f17d685ac11f",
+    "logs": [
+      {
+        "transactionIndex": 15,
+        "blockNumber": 38139699,
+        "transactionHash": "0x4c4125f76c38af4688ab9b7bc18d3f0787f10906f1319ce76505f17d685ac11f",
+        "address": "0xE4E7F8b1F09446Ad9395531E861e0b1467a82Eb3",
+        "topics": [
+          "0x8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0",
+          "0x0000000000000000000000000000000000000000000000000000000000000000",
+          "0x00000000000000000000000087f9f7e6c9502d2ce13dae9ba716e54ca98f118f"
+        ],
+        "data": "0x",
+        "logIndex": 174,
+        "blockHash": "0x1f3d65df663e6070d534d4217d0935769e744dd86be742063cb8bd692e1ef7ba"
+      }
+    ],
+    "blockNumber": 38139699,
+    "cumulativeGasUsed": "4731809",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "9edf331bb0044f6b6297abf6ffefc0a1",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.2+commit.661d1103\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"address\",\"name\":\"deployment\",\"type\":\"address\"}],\"name\":\"ContractDeploy\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"indexed\":true,\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"OwnershipTransferred\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"bytes\",\"name\":\"creationCode\",\"type\":\"bytes\"},{\"internalType\":\"bytes32\",\"name\":\"salt\",\"type\":\"bytes32\"}],\"name\":\"deploy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"owner\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"transferOwnership\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/DeployerContract.sol\":\"DeployerContract\"},\"evmVersion\":\"berlin\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/DeployerContract.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\npragma solidity ^0.8.0;\\n\\nimport \\\"solmate/src/utils/CREATE3.sol\\\";\\nimport \\\"solmate/src/auth/Owned.sol\\\";\\n\\ncontract DeployerContract is Owned {\\n    event ContractDeploy(bytes32 salt, address deployment);\\n\\n    constructor() Owned(msg.sender) {}\\n\\n    function deploy(\\n        bytes memory creationCode,\\n        bytes32 salt\\n    ) external onlyOwner {\\n        address ctc = CREATE3.deploy(salt, creationCode, 0);\\n        emit ContractDeploy(salt, ctc);\\n    }\\n}\\n\",\"keccak256\":\"0x6dd555306cad278b59f9b995f9299a40425835b22570e93ef26fa5c41330f731\",\"license\":\"MIT\"},\"solmate/src/auth/Owned.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.0;\\n\\n/// @notice Simple single owner authorization mixin.\\n/// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/auth/Owned.sol)\\nabstract contract Owned {\\n    /*//////////////////////////////////////////////////////////////\\n                                 EVENTS\\n    //////////////////////////////////////////////////////////////*/\\n\\n    event OwnershipTransferred(address indexed user, address indexed newOwner);\\n\\n    /*//////////////////////////////////////////////////////////////\\n                            OWNERSHIP STORAGE\\n    //////////////////////////////////////////////////////////////*/\\n\\n    address public owner;\\n\\n    modifier onlyOwner() virtual {\\n        require(msg.sender == owner, \\\"UNAUTHORIZED\\\");\\n\\n        _;\\n    }\\n\\n    /*//////////////////////////////////////////////////////////////\\n                               CONSTRUCTOR\\n    //////////////////////////////////////////////////////////////*/\\n\\n    constructor(address _owner) {\\n        owner = _owner;\\n\\n        emit OwnershipTransferred(address(0), _owner);\\n    }\\n\\n    /*//////////////////////////////////////////////////////////////\\n                             OWNERSHIP LOGIC\\n    //////////////////////////////////////////////////////////////*/\\n\\n    function transferOwnership(address newOwner) public virtual onlyOwner {\\n        owner = newOwner;\\n\\n        emit OwnershipTransferred(msg.sender, newOwner);\\n    }\\n}\\n\",\"keccak256\":\"0xfedb27d14c508342c33eb067c9a02eabcdb0f9dcf93b04ded1001f580d12d0ea\",\"license\":\"AGPL-3.0-only\"},\"solmate/src/utils/Bytes32AddressLib.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.0;\\n\\n/// @notice Library for converting between addresses and bytes32 values.\\n/// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/Bytes32AddressLib.sol)\\nlibrary Bytes32AddressLib {\\n    function fromLast20Bytes(bytes32 bytesValue) internal pure returns (address) {\\n        return address(uint160(uint256(bytesValue)));\\n    }\\n\\n    function fillLast12Bytes(address addressValue) internal pure returns (bytes32) {\\n        return bytes32(bytes20(addressValue));\\n    }\\n}\\n\",\"keccak256\":\"0xe709c9f2c6fb8bfe1158fa31967c0a2109844c52079fe4e327baec82fb87acb6\",\"license\":\"AGPL-3.0-only\"},\"solmate/src/utils/CREATE3.sol\":{\"content\":\"// SPDX-License-Identifier: AGPL-3.0-only\\npragma solidity >=0.8.0;\\n\\nimport {Bytes32AddressLib} from \\\"./Bytes32AddressLib.sol\\\";\\n\\n/// @notice Deploy to deterministic addresses without an initcode factor.\\n/// @author Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/CREATE3.sol)\\n/// @author Modified from 0xSequence (https://github.com/0xSequence/create3/blob/master/contracts/Create3.sol)\\nlibrary CREATE3 {\\n    using Bytes32AddressLib for bytes32;\\n\\n    //--------------------------------------------------------------------------------//\\n    // Opcode     | Opcode + Arguments    | Description      | Stack View             //\\n    //--------------------------------------------------------------------------------//\\n    // 0x36       |  0x36                 | CALLDATASIZE     | size                   //\\n    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 size                 //\\n    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 0 size               //\\n    // 0x37       |  0x37                 | CALLDATACOPY     |                        //\\n    // 0x36       |  0x36                 | CALLDATASIZE     | size                   //\\n    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 size                 //\\n    // 0x34       |  0x34                 | CALLVALUE        | value 0 size           //\\n    // 0xf0       |  0xf0                 | CREATE           | newContract            //\\n    //--------------------------------------------------------------------------------//\\n    // Opcode     | Opcode + Arguments    | Description      | Stack View             //\\n    //--------------------------------------------------------------------------------//\\n    // 0x67       |  0x67XXXXXXXXXXXXXXXX | PUSH8 bytecode   | bytecode               //\\n    // 0x3d       |  0x3d                 | RETURNDATASIZE   | 0 bytecode             //\\n    // 0x52       |  0x52                 | MSTORE           |                        //\\n    // 0x60       |  0x6008               | PUSH1 08         | 8                      //\\n    // 0x60       |  0x6018               | PUSH1 18         | 24 8                   //\\n    // 0xf3       |  0xf3                 | RETURN           |                        //\\n    //--------------------------------------------------------------------------------//\\n    bytes internal constant PROXY_BYTECODE = hex\\\"67_36_3d_3d_37_36_3d_34_f0_3d_52_60_08_60_18_f3\\\";\\n\\n    bytes32 internal constant PROXY_BYTECODE_HASH = keccak256(PROXY_BYTECODE);\\n\\n    function deploy(\\n        bytes32 salt,\\n        bytes memory creationCode,\\n        uint256 value\\n    ) internal returns (address deployed) {\\n        bytes memory proxyChildBytecode = PROXY_BYTECODE;\\n\\n        address proxy;\\n        /// @solidity memory-safe-assembly\\n        assembly {\\n            // Deploy a new contract with our pre-made bytecode via CREATE2.\\n            // We start 32 bytes into the code to avoid copying the byte length.\\n            proxy := create2(0, add(proxyChildBytecode, 32), mload(proxyChildBytecode), salt)\\n        }\\n        require(proxy != address(0), \\\"DEPLOYMENT_FAILED\\\");\\n\\n        deployed = getDeployed(salt);\\n        (bool success, ) = proxy.call{value: value}(creationCode);\\n        require(success && deployed.code.length != 0, \\\"INITIALIZATION_FAILED\\\");\\n    }\\n\\n    function getDeployed(bytes32 salt) internal view returns (address) {\\n        address proxy = keccak256(\\n            abi.encodePacked(\\n                // Prefix:\\n                bytes1(0xFF),\\n                // Creator:\\n                address(this),\\n                // Salt:\\n                salt,\\n                // Bytecode hash:\\n                PROXY_BYTECODE_HASH\\n            )\\n        ).fromLast20Bytes();\\n\\n        return\\n            keccak256(\\n                abi.encodePacked(\\n                    // 0xd6 = 0xc0 (short RLP prefix) + 0x16 (length of: 0x94 ++ proxy ++ 0x01)\\n                    // 0x94 = 0x80 + 0x14 (0x14 = the length of an address, 20 bytes, in hex)\\n                    hex\\\"d6_94\\\",\\n                    proxy,\\n                    hex\\\"01\\\" // Nonce of the proxy contract (1)\\n                )\\n            ).fromLast20Bytes();\\n    }\\n}\\n\",\"keccak256\":\"0x1d4ea6d2353ed117d7704ddf7488fcd39edb2d575351f6c64efd313170d74367\",\"license\":\"AGPL-3.0-only\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b50600080546001600160a01b031916339081178255604051909182917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a350610575806100616000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c80634af63f02146100465780638da5cb5b1461005b578063f2fde38b1461008a575b600080fd5b61005961005436600461043e565b61009d565b005b60005461006e906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b610059610098366004610417565b610142565b6000546001600160a01b031633146100eb5760405162461bcd60e51b815260206004820152600c60248201526b15539055551213d49256915160a21b60448201526064015b60405180910390fd5b60006100f9828460006101d6565b604080518481526001600160a01b03831660208201529192507f20f40d02291c6ca45143cb1aeb5a579af785a81379409259786a25d1f2a19bd6910160405180910390a1505050565b6000546001600160a01b0316331461018b5760405162461bcd60e51b815260206004820152600c60248201526b15539055551213d49256915160a21b60448201526064016100e2565b600080546001600160a01b0319166001600160a01b0383169081178255604051909133917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a350565b6000806040518060400160405280601081526020016f67363d3d37363d34f03d5260086018f360801b81525090506000858251602084016000f590506001600160a01b03811661025c5760405162461bcd60e51b81526020600482015260116024820152701111541313d65351539517d19052531151607a1b60448201526064016100e2565b6102658661032c565b92506000816001600160a01b0316858760405161028291906104f0565b60006040518083038185875af1925050503d80600081146102bf576040519150601f19603f3d011682016040523d82523d6000602084013e6102c4565b606091505b505090508080156102de57506001600160a01b0384163b15155b6103225760405162461bcd60e51b815260206004820152601560248201527412539255125053125690551253d397d19052531151605a1b60448201526064016100e2565b5050509392505050565b604080518082018252601081526f67363d3d37363d34f03d5260086018f360801b60209182015290516001600160f81b0319918101919091526bffffffffffffffffffffffff193060601b166021820152603581018290527f21c35dbe1b344a2488cf3321d6ce542f8e9f305544ff09e4993a62319a497c1f605582015260009081906103d0906075015b6040516020818303038152906040528051906020012090565b6040516135a560f21b60208201526bffffffffffffffffffffffff19606083901b166022820152600160f81b6036820152909150610410906037016103b7565b9392505050565b600060208284031215610428578081fd5b81356001600160a01b0381168114610410578182fd5b60008060408385031215610450578081fd5b823567ffffffffffffffff80821115610467578283fd5b818501915085601f83011261047a578283fd5b81358181111561048c5761048c610529565b604051601f8201601f19908116603f011681019083821181831017156104b4576104b4610529565b816040528281528860208487010111156104cc578586fd5b82602086016020830137918201602090810195909552509694909201359450505050565b60008251815b8181101561051057602081860181015185830152016104f6565b8181111561051e5782828501525b509190910192915050565b634e487b7160e01b600052604160045260246000fdfea2646970667358221220a8b2774f34c8301fe4a0f81f2e46be755531d1222135f20f5493c31edb89e8ef64736f6c63430008020033",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b50600436106100415760003560e01c80634af63f02146100465780638da5cb5b1461005b578063f2fde38b1461008a575b600080fd5b61005961005436600461043e565b61009d565b005b60005461006e906001600160a01b031681565b6040516001600160a01b03909116815260200160405180910390f35b610059610098366004610417565b610142565b6000546001600160a01b031633146100eb5760405162461bcd60e51b815260206004820152600c60248201526b15539055551213d49256915160a21b60448201526064015b60405180910390fd5b60006100f9828460006101d6565b604080518481526001600160a01b03831660208201529192507f20f40d02291c6ca45143cb1aeb5a579af785a81379409259786a25d1f2a19bd6910160405180910390a1505050565b6000546001600160a01b0316331461018b5760405162461bcd60e51b815260206004820152600c60248201526b15539055551213d49256915160a21b60448201526064016100e2565b600080546001600160a01b0319166001600160a01b0383169081178255604051909133917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a350565b6000806040518060400160405280601081526020016f67363d3d37363d34f03d5260086018f360801b81525090506000858251602084016000f590506001600160a01b03811661025c5760405162461bcd60e51b81526020600482015260116024820152701111541313d65351539517d19052531151607a1b60448201526064016100e2565b6102658661032c565b92506000816001600160a01b0316858760405161028291906104f0565b60006040518083038185875af1925050503d80600081146102bf576040519150601f19603f3d011682016040523d82523d6000602084013e6102c4565b606091505b505090508080156102de57506001600160a01b0384163b15155b6103225760405162461bcd60e51b815260206004820152601560248201527412539255125053125690551253d397d19052531151605a1b60448201526064016100e2565b5050509392505050565b604080518082018252601081526f67363d3d37363d34f03d5260086018f360801b60209182015290516001600160f81b0319918101919091526bffffffffffffffffffffffff193060601b166021820152603581018290527f21c35dbe1b344a2488cf3321d6ce542f8e9f305544ff09e4993a62319a497c1f605582015260009081906103d0906075015b6040516020818303038152906040528051906020012090565b6040516135a560f21b60208201526bffffffffffffffffffffffff19606083901b166022820152600160f81b6036820152909150610410906037016103b7565b9392505050565b600060208284031215610428578081fd5b81356001600160a01b0381168114610410578182fd5b60008060408385031215610450578081fd5b823567ffffffffffffffff80821115610467578283fd5b818501915085601f83011261047a578283fd5b81358181111561048c5761048c610529565b604051601f8201601f19908116603f011681019083821181831017156104b4576104b4610529565b816040528281528860208487010111156104cc578586fd5b82602086016020830137918201602090810195909552509694909201359450505050565b60008251815b8181101561051057602081860181015185830152016104f6565b8181111561051e5782828501525b509190910192915050565b634e487b7160e01b600052604160045260246000fdfea2646970667358221220a8b2774f34c8301fe4a0f81f2e46be755531d1222135f20f5493c31edb89e8ef64736f6c63430008020033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 55,
+        "contract": "contracts/DeployerContract.sol:DeployerContract",
+        "label": "owner",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}
