@@ -46,7 +46,27 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       bsc: process.env.BSCSCAN_API_KEY, 
+      saakuruMainnet: '',
+      saakuruTestnet: '',
     },
+    customChains: [
+      {
+        network: 'saakuruMainnet',
+        chainId: 7225878,
+        urls: {
+          apiURL: 'https://explorer.saakuru.network/api',
+          browserURL: 'https://explorer.saakuru.network/',
+        },
+      },
+      {
+        network: 'saakuruTestnet',
+        chainId: 247253,
+        urls: {
+          apiURL: 'https://explorer-testnet.saakuru.network/api',
+          browserURL: 'https://explorer-testnet.saakuru.network/',
+        },
+      },
+    ],
   },
   // repository config
   paths: {
