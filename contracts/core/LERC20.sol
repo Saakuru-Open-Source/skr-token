@@ -38,7 +38,7 @@ contract LERC20 is Context, ILERC20 {
         timelockPeriod = timelockPeriod_;
         losslessTurnOffTimestamp = 0;
         require(lossless_ != address(0), "LERC20: Lossless cannot be zero address");
-        lossless = ILssController(lossless_);     
+        lossless = ILssController(lossless_);
     }
 
     // --- LOSSLESS modifiers ---
