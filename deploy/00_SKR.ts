@@ -3,10 +3,24 @@ import { DeployFunction } from 'hardhat-deploy/types';
 import config from '../config';
 import { ethers } from 'hardhat';
 import { DeployerContract } from '../dist/types';
+import { LossLessImplementations } from '../helpers/networks';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
   const { deploy, get, save } = hre.deployments;
+
+  // if network chain id is not saakuru, exit script
+  const chainId = hre.network.config.chainId;
+
+  if (chainId !== 7225878 && chainId !== 247253) {
+    throw new Error('ChainId not supported');
+  }
+
+  const lossLessImplementation = LossLessImplementations[chainId];
+
+  if (!lossLessImplementation) {
+    throw new Error('LossLess implementation not found for chainId: ' + chainId);
+  }
 
   // Deploy the SKR contract using CreateCall contract
   const deployerContractDeployment = await get('DeployerContract');
@@ -14,12 +28,18 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const SKRContract = await ethers.getContractFactory('SKR');
 
+  console.log(
+    config.LOSSLESS_ADMIN,
+    config.LOSSLESS_RECOVERY_ADMIN,
+    config.TIMELOCK_PERIOD,
+    lossLessImplementation,
+  );
   // Encode constructor parameters for SKR
   const deploymentData = SKRContract.getDeployTransaction(
     config.LOSSLESS_ADMIN,
     config.LOSSLESS_RECOVERY_ADMIN,
     config.TIMELOCK_PERIOD,
-    config.LOSSLESS_IMPLEMENTATION,
+    lossLessImplementation,
   ).data;
 
   if (!deploymentData) {
@@ -42,7 +62,7 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       config.LOSSLESS_ADMIN,
       config.LOSSLESS_RECOVERY_ADMIN,
       config.TIMELOCK_PERIOD,
-      config.LOSSLESS_IMPLEMENTATION,
+      lossLessImplementation,
     ],
     // @ts-ignore
     abi: JSON.parse(SKRContract.interface.format(ethers.utils.FormatTypes.json)),

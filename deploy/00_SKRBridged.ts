@@ -3,6 +3,7 @@ import { DeployFunction } from 'hardhat-deploy/types';
 import config from '../config';
 import { ethers } from 'hardhat';
 import { DeployerContract } from '../dist/types';
+import { AssetBridges, LossLessImplementations } from '../helpers/networks';
 
 const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const { deployer } = await hre.getNamedAccounts();
@@ -14,13 +15,34 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
 
   const SKRContract = await ethers.getContractFactory('SKRBridged');
 
+  const chainId = hre.network.config.chainId;
+
+  const minter = AssetBridges[chainId];
+  // if network chain id is not saakuru, exit script
+  if (!minter) {
+    throw new Error('Minter not found for chainId: ' + chainId);
+  }
+
+  const lossLessImplementation = LossLessImplementations[chainId];
+
+  if (!lossLessImplementation) {
+    throw new Error('LossLess implementation not found for chainId: ' + chainId);
+  }
+
+  console.log(    
+    config.LOSSLESS_ADMIN,
+    config.LOSSLESS_RECOVERY_ADMIN,
+    config.TIMELOCK_PERIOD,
+    lossLessImplementation,
+    minter,
+  );
   // Encode constructor parameters for SKR
   const deploymentData = SKRContract.getDeployTransaction(
     config.LOSSLESS_ADMIN,
     config.LOSSLESS_RECOVERY_ADMIN,
     config.TIMELOCK_PERIOD,
-    config.LOSSLESS_IMPLEMENTATION,
-    config.MINTER,
+    lossLessImplementation,
+    minter,
   ).data;
 
   if (!deploymentData) {
@@ -44,8 +66,8 @@ const func: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
       config.LOSSLESS_ADMIN,
       config.LOSSLESS_RECOVERY_ADMIN,
       config.TIMELOCK_PERIOD,
-      config.LOSSLESS_IMPLEMENTATION,
-      config.MINTER,
+      lossLessImplementation,
+      minter,
     ],
     // @ts-ignore
     abi: JSON.parse(SKRContract.interface.format(ethers.utils.FormatTypes.json)),

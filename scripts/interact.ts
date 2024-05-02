@@ -20,6 +20,12 @@ const main = async () => {
   console.log('recoveryAdmin', recoveryAdmin);
   const totalSupply = await contracts.skr.totalSupply();
   console.log('totalSupply', totalSupply.toString());
+  const name = await contracts.skr.name();
+  console.log('name', name);
+  const symbol = await contracts.skr.symbol();
+  console.log('symbol', symbol);
+  const lossless = await contracts.skr.lossless();
+  console.log('lossless', lossless);
 };
 
 main()
